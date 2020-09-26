@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <iterator>
  
-using namespace std;
+using std::cout;
 
 int* tempArray;
 int startValue;
@@ -25,7 +25,7 @@ int randomNumer() {
 }
 
 void startUp(int amount) {
-    nums = new (nothrow) int[amount];
+    nums = new (std::nothrow) int[amount];
 
     cout << "Remember the numbers!!\n";
 
@@ -33,17 +33,17 @@ void startUp(int amount) {
     for (int i = 0; i < amount; i++) {
         if (tempArray[i] != 0) {
             nums[i] = tempArray[i];
-            cout << nums[i] << endl;
+            cout << nums[i] << std::endl;
         }
         else {
             int num = randomNumer();
-            cout << num << endl;
+            cout << num << std::endl;
             nums[i] = num;
         }
     }
     
     //simple countdown
-    cout << endl;
+    cout << std::endl;
     cout << "4 Sec left!!\r";
     Sleep(1000);
     cout << "3 Sec left!!\r";
@@ -60,14 +60,14 @@ void startUp(int amount) {
     for (int i = 0; i < amount; i++) {
         int result;
         cout << "enter number" << i + 1 <<+ " from the row:";
-        cin >> result;
+        std::cin >> result;
 
         if (result == nums[i]) {
-            cout << "Correct!" << endl;
+            cout << "Correct!" << std::endl;
             gehaald = true;
         }
         else {
-            cout << "Jammer fout" << endl;
+            cout << "Jammer fout" << std::endl;
             i = startValue;
             gehaald = false;
         }
@@ -80,7 +80,7 @@ void startUp(int amount) {
         system("CLS");
 
         int newAmount = amount + 1;
-        tempArray = new (nothrow) int[newAmount];
+        tempArray = new (std::nothrow) int[newAmount];
 
         for (int n = 0; n < amount; n++) {
             tempArray[n] = nums[n];
@@ -105,7 +105,7 @@ int main()
     srand(seed);
 
     startValue = 3;
-    tempArray = new (nothrow) int[startValue];
+    tempArray = new (std::nothrow) int[startValue];
 
     for (int i = 0; i < startValue; i++) {
         tempArray[i] = 0;
