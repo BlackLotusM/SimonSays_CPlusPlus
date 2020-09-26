@@ -29,6 +29,7 @@ void startUp(int amount) {
 
     cout << "Remember the numbers!!\n";
 
+    //displays the numbers, if a number in the array is 0 it will generate a new number, otherwise it will repeat
     for (int i = 0; i < amount; i++) {
         if (tempArray[i] != 0) {
             nums[i] = tempArray[i];
@@ -41,6 +42,7 @@ void startUp(int amount) {
         }
     }
     
+    //simple countdown
     cout << endl;
     cout << "4 Sec left!!\r";
     Sleep(1000);
@@ -51,8 +53,10 @@ void startUp(int amount) {
     cout << "1 Sec left!!\r";
     Sleep(1000);
 
+    //screen clear
     system("CLS");
 
+    //Number checker to check if you fill in the correct number
     for (int i = 0; i < amount; i++) {
         int result;
         cout << "enter number" << i + 1 <<+ " from the row:";
@@ -69,12 +73,14 @@ void startUp(int amount) {
         }
     }
 
+    //if you survive the round it will reset the arrays here and redo the main array with a bigger size than before.
     if (gehaald) {
         tempArray = NULL;
         delete[] tempArray;
         system("CLS");
 
-        tempArray = new (nothrow) int[amount + 1];
+        int newAmount = amount + 1;
+        tempArray = new (nothrow) int[newAmount];
 
         for (int n = 0; n < amount; n++) {
             tempArray[n] = nums[n];
@@ -93,8 +99,11 @@ void startUp(int amount) {
     }
 }
 
+//Set seed for random number, Makes an empty temp array at start. This is to store numbers from main array to clear it and refil a bigger main array
 int main()
 {
+    srand(seed);
+
     startValue = 3;
     tempArray = new (nothrow) int[startValue];
 
@@ -102,6 +111,6 @@ int main()
         tempArray[i] = 0;
     }
 
-    srand(seed);
+    
     startUp(startValue);
 }
